@@ -1,5 +1,6 @@
 pandas
 numpy
 scipy
-matplotlib
-seaborn
+matplotlib #GRAFICAS 
+seaborn #graficas con estadisticas
+scikit-learn #GRAFICAS DE MACHINE LEARNING
