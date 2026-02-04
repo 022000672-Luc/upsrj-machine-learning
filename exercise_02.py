@@ -31,7 +31,7 @@ logging.basicConfig(
         logging.FileHandler("exercise_02.log", mode='w', encoding="utf-8")
     ]
 )
-    
+
 # ------------------------------------------------------------
 # STEP 1: Load and inspect the dataset
 # ------------------------------------------------------------
@@ -43,6 +43,8 @@ logging.basicConfig(
 # Check data types and verify that there are no missing values.
 SOURCE_FILE = os.path.join(".","inputs", "FuelConsumptionCo2.csv")
 OUT_FOLDER = os.path.join(".","out")
+os.makedirs(OUT_FOLDER, exist_ok=True)   # <-- aseguramos que exista la carpeta
+
 database= pd.read_csv(SOURCE_FILE)
 
 logging.info(f"Archivo procesado:  {SOURCE_FILE}")
@@ -55,7 +57,6 @@ logging.debug(f"\n{X}\n")
 
 logging.info(f"Variable independiente 'CO2EMISSIONS' :")
 logging.debug(f"\n{y}\n")
-
 
 
 # ------------------------------------------------------------
@@ -141,8 +142,9 @@ plt.scatter(X_test, y_test)
 plt.title("Datos de prueba (test)")
 plt.grid(True)
 
+plt.savefig(os.path.join(OUT_FOLDER, "srl_datasplit.jpg"))   # <-- guardar antes
 plt.show()
-plt.savefig(os.path.join(OUT_FOLDER, "srl_datasplit.jpg"))
+
 
 # ------------------------------------------------------------
 # STEP 5: Train the simple linear regression model
@@ -203,8 +205,10 @@ plt.ylabel("CO2 Emissions")
 plt.title("Prediccion con regrección linear simple")
 plt.grid(True)
 
+plt.savefig(os.path.join(OUT_FOLDER, "srl_model.jpg"))   # <-- guardar antes
 plt.show()
-plt.savefig(os.path.join(OUT_FOLDER, "srl_model.jpg"))
+
+
 # ============================================================
 # PART 2: MULTIPLE LINEAR REGRESSION
 # ============================================================
@@ -266,4 +270,3 @@ plt.savefig(os.path.join(OUT_FOLDER, "srl_model.jpg"))
 #   - Which variable has the strongest influence on CO2 emissions?
 #   - Why is multiple linear regression more suitable for this problem?
 #   - What assumptions does linear regression make?
-
